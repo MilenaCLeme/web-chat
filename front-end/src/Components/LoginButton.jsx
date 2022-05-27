@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { ButtonLogin } from '../styles/loginStyle';
 
 // eslint-disable-next-line react/prop-types
 export default function LoginButton({ userData: { username, password } }) {
@@ -34,14 +35,14 @@ export default function LoginButton({ userData: { username, password } }) {
   }
 
   return (
-    <button
+    <ButtonLogin
       className="lf--submit"
       type="button"
-      onClick={handleClick}
+      onClick={() => handleClick}
       disabled={!!(username.length < 5 || password.length < 6)}
     >
       Entrar
-    </button>
+    </ButtonLogin>
   );
 }
 

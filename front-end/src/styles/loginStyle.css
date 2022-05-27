@@ -84,12 +84,4 @@ body {
     background-color: gray !important;
   }
 
-.lf--forgot {
-  margin-top: 1em;
-  color: #00d6b7;
-  font-size: .65em;
-  text-align: center;
-  position: relative;
-}
-
 ::placeholder { color: #8f8f8f; }
