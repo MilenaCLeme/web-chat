@@ -17,7 +17,6 @@ body {
   
 }
 
-
 .login-form {
   width: 100%;
   padding: 2em;
@@ -66,12 +65,7 @@ body {
     display: block;
     padding: 1em;
     width: 100%;
-    
-    background: linear-gradient(
-      to right,
-      #35c3c1,
-      #00d6b7
-    );
+    background-color: #35c3c1;
     border: 0;
     color: #fff;
     cursor: pointer;
@@ -86,12 +80,8 @@ body {
     transform: scale(1.1);
   }
 
-.lf--forgot {
-  margin-top: 1em;
-  color: #00d6b7;
-  font-size: .65em;
-  text-align: center;
-  position: relative;
-}
+  .lf--submit:disabled {
+    background-color: gray !important;
+  }
 
 ::placeholder { color: #8f8f8f; }
