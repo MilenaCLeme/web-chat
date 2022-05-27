@@ -6,7 +6,7 @@ import '../styles/loginStyle.css';
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [userData, setUserData] = useState({ });
+  const [userData, setUserData] = useState({ username: '', password: '' });
 
   useEffect(() => {
     setUserData({ username, password });
