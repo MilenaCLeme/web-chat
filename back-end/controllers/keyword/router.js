@@ -4,6 +4,6 @@ const keyword = require('./keyword');
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', rescue(keyword));
+router.post('/', rescue(keyword));
 
 module.exports = router;
