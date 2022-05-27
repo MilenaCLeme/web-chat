@@ -11,7 +11,6 @@ body {
   background:#f2f2f2 ;
   font-family: 'Roboto', helvetica, arial, sans-serif;
   font-size: 1.5em;
-  
 }
 `;
 
@@ -85,6 +84,8 @@ const ButtonLogin = styled.button`
   }
   :disabled {
     background-color: gray !important;
+    color: darkgray;
+    cursor: not-allowed;
   }
 `;
 

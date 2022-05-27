@@ -6,14 +6,17 @@ import { ButtonLogin } from '../styles/loginStyle';
 // eslint-disable-next-line react/prop-types
 export default function LoginButton({ userData: { username, password } }) {
   const [redirect, setRedirect] = useState(false);
+  const [email, setEmail] = useState(false);
   const navigate = useNavigate();
 
   const correctLogin = {
-    username: 'admin',
+    username: 'admin@admin.com',
     password: '123456',
   };
 
   useEffect(() => {
+    const re = /\S+@\S+\.\S+/;
+    setEmail(re.test(username));
     // async function callApi(){
     //   const response = await functionApi()
     //   if (response.statusCode === 200)
@@ -38,8 +41,8 @@ export default function LoginButton({ userData: { username, password } }) {
     <ButtonLogin
       className="lf--submit"
       type="button"
-      onClick={() => handleClick}
-      disabled={!!(username.length < 5 || password.length < 6)}
+      onClick={() => handleClick()}
+      disabled={!!(!email || password.length < 6)}
     >
       Entrar
     </ButtonLogin>
