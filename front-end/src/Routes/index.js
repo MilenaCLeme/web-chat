@@ -1,11 +1,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Login from '../Pages/Login';
+import Home from '../Pages/Home';
 
 export default function Router() {
   return (
     <Routes>
-      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/" element={<Home />} />
     </Routes>
   );
 }
