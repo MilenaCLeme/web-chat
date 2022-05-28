@@ -9,7 +9,7 @@ export default function Home() {
   const [buttonClick, setButtonClick] = useState('');
 
   const callApi = async (keyWordInput) => {
-    await fetch('/keyword', {
+    await fetch('http://localhost:3001/keyword', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -20,7 +20,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((json) => {
         setButtons(
-          json.tests.filter(({ keyWord }) => keyWord.toLowerCase() === keyWordInput.toLowerCase()),
+          json.filter(({ keyWord }) => keyWord.toLowerCase() === keyWordInput.toLowerCase()),
         );
         setOptions(true);
       });
@@ -51,7 +51,9 @@ export default function Home() {
                       }
                     </div>
                     <div>
-                      <Button name="Fale com Atendente" />
+                      <a target="_blank" href="wa.me/55">
+                        <Button name="Fale com Atendente" />
+                      </a>
                     </div>
                   </div>
                 ) : null
