@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import Button from '../components/Button';
+import Button from '../Components/Button';
+import {
+  Answer,
+  ChatArea,
+  InputChat,
+  MainContainer,
+} from '../styles/homeStyle';
 
 export default function Home() {
   const [chat, setChat] = useState(false);
@@ -27,49 +33,45 @@ export default function Home() {
   };
 
   return (
-    <>
-      {
-        chat
-          ? (
+    <MainContainer>
+      { chat ? (
+        <ChatArea>
+          { options ? (
             <div>
-              {
-                options ? (
-                  <div>
-                    <div>
-                      {
-                        buttons.length !== 0 ? buttons.map(({ command }) => (
-                          <Button name={command} func={() => setButtonClick(command)} />
-                        )) : (<p>Palavra chave não encontrada</p>)
-                      }
-                    </div>
-                    <div>
-                      {
-                        buttons.filter(({ command }) => command === buttonClick)
-                          .map(({ instructions }) => (
-                            <p>{instructions}</p>
-                          ))
-                      }
-                    </div>
-                    <div>
-                      <a target="_blank" href="wa.me/55">
-                        <Button name="Fale com Atendente" />
-                      </a>
-                    </div>
-                  </div>
-                ) : null
-              }
               <div>
-                <p>Digite uma palvra chave e click em enviar para receber as opções:</p>
+                {
+                 buttons.length !== 0 ? buttons.map(({ command }) => (
+                   <Button name={command} func={() => setButtonClick(command)} stl="opcoes" />
+                 )) : (<Answer>Palavra chave não encontrada</Answer>)
+                }
               </div>
-              <input type="text" onChange={({ target }) => setWord(target.value)} value={word} />
-              <Button name="enviar" func={() => { callApi(word); }} />
-              <Button name="Finalizar" func={() => setOptions(false)} />
+              <div>
+                {
+                  buttons.filter(({ command }) => command === buttonClick)
+                    .map(({ instructions }) => (
+                      <Answer>{instructions}</Answer>
+                    ))
+                }
+              </div>
+              <div>
+                <a target="_blank" href="wa.me/55">
+                  <Button name="Fale com Atendente" stl="falecom" />
+                </a>
+              </div>
             </div>
-          ) : null
-      }
+          ) : null}
+          <div>
+            <Answer>Digite uma palvra chave e click em enviar para receber as opções:</Answer>
+          </div>
+          <InputChat type="text" onChange={({ target }) => setWord(target.value)} value={word} />
+          <Button name="Enviar" func={() => { callApi(word); }} stl="final-envia" />
+          <Button name="Finalizar" func={() => setOptions(false)} stl="final-envia" />
+
+        </ChatArea>
+      ) : null}
       <div>
-        <Button name="Fale Conosco" func={() => setChat(!chat)} />
+        <Button name="Fale Conosco" func={() => setChat(!chat)} stl="faleconosco" />
       </div>
-    </>
+    </MainContainer>
   );
 }
