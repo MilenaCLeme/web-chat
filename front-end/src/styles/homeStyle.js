@@ -55,7 +55,7 @@ const FaleConosco = styled.button`
 
 const Opcoes = styled.button`
   background-color: #fff;
-  border: 0 solid #e2e8f0;
+  border: 1 solid #e2e8f0;
   border-radius: 1.5rem;
   box-sizing: border-box;
   color: #0d172a;
@@ -135,9 +135,9 @@ const Finaliza = styled.button`
 const Answer = styled.p`
   border: 1px solid;
   border-radius: 6px;
-  background-color: #fafafa;
+  background-color: #e8e8e8;
   padding: 15px;
-
+  max-width: fit-content;
 `;
 
 export {

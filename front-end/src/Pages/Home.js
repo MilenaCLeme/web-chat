@@ -54,16 +54,25 @@ export default function Home() {
                 }
               </div>
               <div>
-                <a target="_blank" href="wa.me/55">
+                <a target="_blank" href="http://wa.me/55" rel="noreferrer">
                   <Button name="Fale com Atendente" stl="falecom" />
                 </a>
               </div>
             </div>
           ) : null}
           <div>
-            <Answer>Digite uma palvra chave e click em enviar para receber as opções:</Answer>
+            <Answer>Digite uma palvra chave e clique em enviar para receber as opções:</Answer>
           </div>
-          <InputChat type="text" onChange={({ target }) => setWord(target.value)} value={word} />
+          <InputChat
+            type="text"
+            onChange={({ target }) => setWord(target.value)}
+            value={word}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                callApi(word);
+              }
+            }}
+          />
           <Button name="Enviar" func={() => { callApi(word); }} stl="final-envia" />
           <Button name="Finalizar" func={() => setOptions(false)} stl="final-envia" />
 
