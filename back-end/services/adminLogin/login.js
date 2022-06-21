@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const Models = require('../../models');
+const Model = require('../../models');
 const { invalidData } = require('../../utilities/setErrors');
 const { validateLogin } = require('./validations');
 
@@ -11,11 +11,13 @@ module.exports = async (user) => {
     return invalidData(StatusCodes.BAD_REQUEST, validateError.message);
   }
 
-  const findUser = await Models.Attendants.find(email);
+  const findUser = await Model.Attendants.findOne({ where: { email }});
 
   if (!findUser || password !== findUser.password) {
     return invalidLogin;
   }
+
+  const findUserWPassword = await Model.Attendants.findOne({ attributes: { exclude: ['password'] }, where: { email } });
   
-  return { status: StatusCodes.OK, message: createdUser };
+  return { status: StatusCodes.OK, message: findUserWPassword };
 };
