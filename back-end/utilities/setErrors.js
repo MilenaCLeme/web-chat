@@ -10,7 +10,13 @@ const nonExistentUser = {
   message: 'Dados incorretos',
 };
 
+const alreadyExists = (message) => ({
+  status: StatusCodes.CONFLICT,
+  message,
+});
+
 module.exports = {
   invalidData,
   nonExistentUser,
+  alreadyExists,
 };
