@@ -1,9 +1,10 @@
 const { StatusCodes } = require('http-status-codes');
 const { invalidData, invalidAttendantId } = require('../../utilities/setErrors');
 const { validateAttendant } = require('./validations');
-const Models = require('../../models');
+const Model = require('../../models');
 
 module.exports = async(id, attendant) => {
+  const { name, email, password, role } = attendant;
 
   const validateError = validateAttendant(attendant).error;
   if (validateError) {
@@ -13,9 +14,9 @@ module.exports = async(id, attendant) => {
   
   if (!findById) return invalidAttendantId;
 
-  await Models.Attendants.update({ attendant }, { where: { id } });
+  await Models.Attendants.update({ name, email, password, role }, { where: { id } });
 
-  const updatedAttendant = await Models.Attendants.findOne({ where: { id } });
+  const updatedAttendant = await Model.Attendants.findOne({ attributes: { exclude: ['password'] }, where: { id } });
 
   return { status: StatusCodes.OK, message: updatedAttendant };
 };

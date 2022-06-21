@@ -21,8 +21,7 @@ module.exports = async (attendant) => {
 
   const newAttendant = await Model.Attendants.create(attendant);
 
-  delete newAttendant.password;
-  const attendantWPassword = newAttendant;
+  const attendantWPassword = await Model.Attendants.findOne({ attributes: { exclude: ['password'] }, where: { id: newAttendant.id } });;
 
   
   return { status: StatusCodes.CREATED, message: attendantWPassword };
