@@ -1,3 +1,4 @@
+const { StatusCodes } = require('http-status-codes');
 const Model = require('../../models');
 const { alreadyExists, invalidData } = require('../../utilities/setErrors');
 const { validateAttendant } = require('./validations');
@@ -9,6 +10,10 @@ module.exports = async (attendant) => {
   }
   
   const findAttendant = await Model.Attendants.findOne({ where: { email: attendant.email } });
+
+  if (findAttendant) {
+    return alreadyExists('O atendente já existe');
+  }
 
   if (findAttendant) {
     return alreadyExists('O atendente já existe');
