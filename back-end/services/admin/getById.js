@@ -3,7 +3,7 @@ const Model = require('../../models');
 const { invalidAttendantId } = require('../../utilities/setErrors');
 
 module.exports = async (id) => {
-  const findById = await Model.Users.findByPk(id);
+  const findById = await Model.Attendants.findByPk(id);
   
   if (!findById) {
     return invalidAttendantId;

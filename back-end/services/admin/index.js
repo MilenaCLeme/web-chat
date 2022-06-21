@@ -1,9 +1,9 @@
 const create = require('./create');
-const getUserById = require('./getById');
+const getById = require('./getById');
 const update = require('./update');
 
 module.exports = {
   create,
-  getUserById,
+  getById,
   update,
 };
