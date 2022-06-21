@@ -5,13 +5,14 @@ module.exports = {
     [
       {
         email: 'icequeen@gmail.com',
-        password: '12345',
+        name: 'Lissandra',
       },
       {
-        email: 'teste@test.com',
-        password: '12345',
+        email: 'sarah@gmail.com',
+        name: 'Sarah Kerrigan',
       },
     ], {}),
 
   down: async (queryInterface) => queryInterface.bulkDelete('Users', null, {}),
 };
+
