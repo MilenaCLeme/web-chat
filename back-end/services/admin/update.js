@@ -10,11 +10,11 @@ module.exports = async(id, attendant) => {
   if (validateError) {
     return invalidData(validateError.message);
   }
-  const findById = await Models.Attendants.findOne({ where: { id } });
+  const findById = await Model.Attendants.findOne({ where: { id } });
   
   if (!findById) return invalidAttendantId;
 
-  await Models.Attendants.update({ name, email, password, role }, { where: { id } });
+  await Model.Attendants.update({ name, email, password, role }, { where: { id } });
 
   const updatedAttendant = await Model.Attendants.findOne({ attributes: { exclude: ['password'] }, where: { id } });
 
