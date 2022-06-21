@@ -7,7 +7,7 @@ const root = express.Router({ mergeParams: true });
 
 root.use('/userlogin', login);
 root.use('/keyword', keyword);
-root.use('/admin', keyword);
+root.use('/admin', admin);
 
 
 module.exports = root;
