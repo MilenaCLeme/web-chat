@@ -6,10 +6,14 @@ module.exports = {
       {
         email: 'icequeen@gmail.com',
         name: 'Lissandra',
+        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       {
         email: 'sarah@gmail.com',
         name: 'Sarah Kerrigan',
+        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     ], {}),
 
