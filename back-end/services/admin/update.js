@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const { invalidData, invalidAttendantId } = require('../../utilities/setErrors');
-const { validateAttendant } = require('../validations');
+const { validateAttendant } = require('./validations');
 const Models = require('../../models');
 
 module.exports = async(id, attendant) => {
@@ -15,5 +15,7 @@ module.exports = async(id, attendant) => {
 
   await Models.Attendants.update({ attendant }, { where: { id } });
 
-  return { status: StatusCodes.OK, message: updatedKit };
+  const updatedAttendant = await Models.Attendants.findOne({ where: { id } });
+
+  return { status: StatusCodes.OK, message: updatedAttendant };
 };

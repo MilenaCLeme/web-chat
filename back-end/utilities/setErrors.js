@@ -20,9 +20,15 @@ const invalidAttendantId = {
   message: 'O atendente não existe',
 };
 
+const invalidLogin = {
+  status: StatusCodes.UNAUTHORIZED,
+  message: 'Email ou senha incorretos',
+};
+
 module.exports = {
   invalidData,
   nonExistentUser,
   alreadyExists,
   invalidAttendantId,
+  invalidLogin,
 };
