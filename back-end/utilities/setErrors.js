@@ -15,8 +15,14 @@ const alreadyExists = (message) => ({
   message,
 });
 
+const invalidAttendantId = {
+  status: StatusCodes.NOT_FOUND,
+  message: 'O atendente não existe',
+};
+
 module.exports = {
   invalidData,
   nonExistentUser,
   alreadyExists,
+  invalidAttendantId,
 };
