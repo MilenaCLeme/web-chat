@@ -16,7 +16,7 @@ module.exports = async(id, attendant) => {
 
   await Model.Attendants.update({ name, email, password, role }, { where: { id } });
 
-  const updatedAttendant = await Model.Attendants.findOne({ attributes: { exclude: ['password'] }, where: { id } });
+  const updatedAttendant = await Model.Attendants.findOne({ where: { id } });
 
   return { status: StatusCodes.OK, message: updatedAttendant };
 };
