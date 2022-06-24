@@ -33,7 +33,11 @@ export default function Button({
   if (stl === 'final-envia') {
     return (
 <<<<<<< HEAD:front-end/src/Components/Button.js
+<<<<<<< HEAD:front-end/src/Components/Button.js
       <Finaliza style={name === 'Finalizar' ? { backgroundColor: '#f54053' } : {}} disabled={bool} type="submit" onClick={func}>
+=======
+      <Finaliza style={name === 'Finalizar' ? { backgroundColor: '#f54053' } : {}} type="submit" onClick={func}>
+>>>>>>> ec67a630c3c6bf5c425554e82cc683d213070069:front-end/src/components/Button.js
 =======
       <Finaliza style={name === 'Finalizar' ? { backgroundColor: '#f54053' } : {}} type="submit" onClick={func}>
 >>>>>>> ec67a630c3c6bf5c425554e82cc683d213070069:front-end/src/components/Button.js
