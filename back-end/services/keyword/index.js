@@ -1,5 +1,7 @@
-const keyword = require('./keyword');
+const createKeyWord = require('./create');
+const getKeyWord = require('./get');
 
 module.exports = {
-  keyword,
+  getKeyWord,
+  createKeyWord
 };

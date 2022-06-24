@@ -32,7 +32,7 @@ export default function Button({
   }
   if (stl === 'final-envia') {
     return (
-      <Finaliza type="submit" disabled={bool} onClick={func}>
+      <Finaliza style={name === 'Finalizar' ? { backgroundColor: '#f54053' } : {}} disabled={bool} type="submit" onClick={func}>
         {name}
       </Finaliza>
     );
