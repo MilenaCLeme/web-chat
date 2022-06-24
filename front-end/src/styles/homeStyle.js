@@ -102,6 +102,11 @@ const FaleAtendente = styled.button`
   :hover {
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
   }
+  :disabled {
+    background-color: #666;
+    cursor: auto;
+    box-shadow: none
+  }
 `;
 
 const Finaliza = styled.button`
