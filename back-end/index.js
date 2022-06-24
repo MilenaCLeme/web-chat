@@ -25,14 +25,16 @@ app.use(error);
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`); // quando conectar no front vai aparecer o id do user
-  // socket.on("", () => {});
+
+  socket.on('send_mensage', (data) => console.log(data)); // recebe mensagens do front
+
   socket.on("disconnect", () => {
-    console.log("User Disconnected", socket.id);
+    console.log("User Disconnected", socket.id); // e quando o user sair vai aparecer a mensagem
   });
 });
 
-app.listen(PORT, () => console.log(`ouvindo porta ${PORT}!`));
+// app.listen(PORT, () => console.log(`ouvindo porta ${PORT}!`));
 
-// server.listen(PORT, () => {
-//   console.log(`ouvindo porta ${PORT}!`);
-// });
+server.listen(PORT, () => {
+  console.log(`ouvindo a porta ${PORT}!`);
+});

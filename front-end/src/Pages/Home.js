@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
 import checkEmail from '../common/utils/checkEmail';
 import Button from '../Components/Button';
 import Chat from '../Components/Chat';
@@ -8,6 +9,8 @@ import {
   InputChat,
   MainContainer,
 } from '../styles/homeStyle';
+
+const socket = io.connect('http://localhost:3001');
 
 export default function Home() {
   const [chat, setChat] = useState(false);
@@ -26,6 +29,10 @@ export default function Home() {
     const newHours = newDate.getHours();
     return newHours >= 8 && newHours < 18;
   };
+
+  useEffect(async () => {
+    await socket.emit('send_mensage', [{ name: '', message: '' }]);
+  }, []);
 
   const callApi = async (keyWordInput) => {
     await fetch('localhost:3000/keyword', {
