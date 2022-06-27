@@ -6,31 +6,33 @@ import {
 } from '../styles/homeStyle';
 
 // eslint-disable-next-line react/prop-types
-export default function Button({ name, func, stl }) {
+export default function Button({
+  name, func, stl, bool,
+}) {
   if (stl === 'faleconosco') {
     return (
-      <FaleConosco type="submit" onClick={func}>
+      <FaleConosco type="submit" disabled={bool} onClick={func}>
         {name}
       </FaleConosco>
     );
   }
   if (stl === 'falecom') {
     return (
-      <FaleAtendente type="submit" onClick={func}>
+      <FaleAtendente type="submit" disabled={bool} onClick={func}>
         {name}
       </FaleAtendente>
     );
   }
   if (stl === 'opcoes') {
     return (
-      <Opcoes type="submit" onClick={func}>
+      <Opcoes type="submit" disabled={bool} onClick={func}>
         {name}
       </Opcoes>
     );
   }
   if (stl === 'final-envia') {
     return (
-      <Finaliza style={name === 'Finalizar' ? { backgroundColor: '#f54053' } : {}} type="submit" onClick={func}>
+      <Finaliza style={name === 'Finalizar' ? { backgroundColor: '#f54053' } : {}} disabled={bool} type="submit" onClick={func}>
         {name}
       </Finaliza>
     );
@@ -41,4 +43,5 @@ Button.propTypes = {
   name: PropTypes.string.isRequired,
   func: PropTypes.func.isRequired,
   stl: PropTypes.string.isRequired,
+  bool: PropTypes.bool.isRequired,
 };

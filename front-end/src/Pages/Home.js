@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
+import checkEmail from '../common/utils/checkEmail';
 import Button from '../Components/Button';
+import Chat from '../Components/Chat';
 import {
   Answer,
   ChatArea,
@@ -7,12 +10,29 @@ import {
   MainContainer,
 } from '../styles/homeStyle';
 
+const socket = io.connect('http://localhost:3001');
+
 export default function Home() {
   const [chat, setChat] = useState(false);
   const [word, setWord] = useState('');
   const [options, setOptions] = useState(false);
   const [buttons, setButtons] = useState([]);
   const [buttonClick, setButtonClick] = useState('');
+  const [startForm, setStartForm] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [chatClient, setChatClient] = useState(false);
+  const [text, setText] = useState('');
+
+  const disabledButton = () => {
+    const newDate = new Date();
+    const newHours = newDate.getHours();
+    return newHours >= 8 && newHours < 18;
+  };
+
+  useEffect(async () => {
+    await socket.emit('send_mensage', [{ name: '', message: '' }]);
+  }, []);
 
   const callApi = async (keyWordInput) => {
     await fetch('http://localhost:3002/keyword', {
@@ -28,20 +48,58 @@ export default function Home() {
         setButtons(
           json.filter(({ keyWord }) => keyWord.toLowerCase() === keyWordInput.toLowerCase()),
         );
-        setOptions(true);
       });
+    setOptions(true);
   };
 
   return (
     <MainContainer>
-      { chat ? (
+      {
+        chatClient && (
+          <ChatArea>
+            <>
+              <button type="button" onClick={() => { setChatClient(false); setStartForm(true); }}>Voltar</button>
+              <Chat name="Assistente" message={[]} />
+              <input type="text" value={text} onChange={({ target }) => setText(target.value)} />
+              <button type="submit">Enviar</button>
+            </>
+          </ChatArea>
+        )
+      }
+      {
+        startForm && (
+          <ChatArea>
+            <p>Informe os dados corretamente para poder iniciar a conversa com o atendente</p>
+            <form style={{ display: 'flex', flexDirection: 'column' }}>
+              <label htmlFor="name">
+                Nome:
+                <input type="text" id="name" name="name" value={name} onChange={({ target }) => setName(target.value)} />
+              </label>
+              <label htmlFor="email">
+                E-mail:
+                <input type="text" id="email" name="email" value={email} onChange={({ target }) => setEmail(target.value)} />
+              </label>
+              <button type="button" onClick={() => { setStartForm(false); setChat(true); }}>Voltar</button>
+              <button
+                type="button"
+                disabled={!(name !== '' && email !== '' && checkEmail(email))}
+                onClick={() => { setChatClient(true); setStartForm(false); }}
+              >
+                Iniciar conversa
+              </button>
+            </form>
+          </ChatArea>
+        )
+      }
+      { chat && (
         <ChatArea>
-          { options ? (
+          <Button name="x" bool={false} func={() => { setOptions(false); setChat(false); setWord(''); }} stl="final-envia" />
+          { options && (
             <div>
               <div>
                 {
                  buttons.length !== 0 ? buttons.map(({ command }) => (
-                   <Button name={command} func={() => setButtonClick(command)} stl="opcoes" />
+                   <Button name={command} bool={false} func={() => setButtonClick(command)} stl="opcoes" disabled />
                  )) : (<Answer>Palavra chave não encontrada</Answer>)
                 }
               </div>
@@ -54,12 +112,11 @@ export default function Home() {
                 }
               </div>
               <div>
-                <a target="_blank" href="http://wa.me/55" rel="noreferrer">
-                  <Button name="Fale com Atendente" stl="falecom" />
-                </a>
+                <Button name="Fale com Atendente" bool={!disabledButton()} func={() => { setStartForm(true); setChat(false); }} stl="falecom" />
               </div>
+              <p>Horario de Atendimento: 8 horas ás 18 horas</p>
             </div>
-          ) : null}
+          )}
           <div>
             <Answer>Digite uma palvra chave e clique em enviar para receber as opções:</Answer>
           </div>
@@ -73,13 +130,12 @@ export default function Home() {
               }
             }}
           />
-          <Button name="Enviar" func={() => { callApi(word); }} stl="final-envia" />
-          <Button name="Finalizar" func={() => setOptions(false)} stl="final-envia" />
+          <Button name="Enviar" bool={false} func={() => { callApi(word); }} stl="final-envia" />
 
         </ChatArea>
-      ) : null}
+      )}
       <div>
-        <Button name="Fale Conosco" func={() => setChat(!chat)} stl="faleconosco" />
+        <Button name="Fale Conosco" bool={startForm || chatClient} func={() => { setStartForm(false); setChat(!chat); }} stl="faleconosco" />
       </div>
     </MainContainer>
   );
