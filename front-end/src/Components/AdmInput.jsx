@@ -4,7 +4,9 @@ import { InputAdm, LabelAdm } from '../styles/admStyle';
 
 import { FlexDiv } from '../styles/loginStyle';
 
-export default function AdmInput({ type, fieldName, setterFunction }) {
+export default function AdmInput({
+  type, fieldName, placeholder, setterFunction,
+}) {
   return (
     <FlexDiv>
       <LabelAdm htmlFor={`input-adm-${type}`}>
@@ -13,6 +15,7 @@ export default function AdmInput({ type, fieldName, setterFunction }) {
       </LabelAdm>
       <InputAdm
         className="lf--input"
+        placeholder={placeholder}
         id={`input-adm-${type}`}
         type={type}
         onChange={(e) => setterFunction(e.target.value)}
@@ -24,5 +27,6 @@ export default function AdmInput({ type, fieldName, setterFunction }) {
 AdmInput.propTypes = {
   type: PropTypes.string.isRequired,
   fieldName: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
   setterFunction: PropTypes.func.isRequired,
 };

@@ -4,7 +4,6 @@ const InputAdm = styled.input`
   flex: 1;
   padding: 0.5em;
   border: 1;
-  color: #8f8f8f;
   font-size: 1rem;
   max-width: fit-content;
 
@@ -103,6 +102,10 @@ const OkButton = styled.button`
     :hover {
       background-color: #4c97ea;
       box-shadow: 1px 1px 2px ;
+    }
+    :disabled {
+    background-color: gray;
+
     }
   `;
 

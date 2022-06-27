@@ -39,11 +39,11 @@ export default function Adm() {
             Gerenciar atendentes
           </button>
         </h1>
-        <h1>
+        {/*         <h1>
           <button type="button" onClick={() => setAdmOption('ManageQuestions')}>
             Gerenciar perguntas
           </button>
-        </h1>
+        </h1> */}
       </div>
       <div>
         {renderComponent()}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createQuestion } from '../services/question';
 import { LabelAdm, OkButton } from '../styles/admStyle';
 import AdmInput from './AdmInput';
 
@@ -8,10 +9,9 @@ export default function ResgisterQuestion() {
 
   const [answer, setAnswer] = useState('');
 
-  function submitForm() {
-    alert(`Usuário ${question} cadastrado com sucesso`);
-    console.log(answer);
-    console.log(command);
+  async function submitForm() {
+    await createQuestion(question, command, answer);
+    alert('Pergunta cadastrada');
   }
 
   return (

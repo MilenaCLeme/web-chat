@@ -1,20 +1,20 @@
 export async function getQuestions() {
-  const request = await fetch('http://localhost:3002/keyword');
+  const request = await fetch('http://localhost:3001/keyword');
   const response = await request.json();
   return response;
 }
 
-export async function createQuestion(data) {
-  const request = await fetch('http://localhost:3002/keyword', {
+export async function createQuestion(keyWord, command, instructions) {
+  const request = await fetch('http://localhost:3001/keyword/new', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      keyword: data.keyword,
-      command: data.command,
-      instruction: data.instruction,
+      keyWord,
+      command,
+      instructions,
     }),
   });
   const response = await request.json();
@@ -22,7 +22,7 @@ export async function createQuestion(data) {
 }
 
 export async function deleteQuestion(id) {
-  const request = await fetch(`http://localhost:3002/keyword/${id}`, {
+  const request = await fetch(`http://localhost:3001/keyword/${id}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
