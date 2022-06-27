@@ -35,7 +35,7 @@ export default function Home() {
   }, []);
 
   const callApi = async (keyWordInput) => {
-    await fetch('localhost:3000/keyword', {
+    await fetch('http://localhost:3002/keyword', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

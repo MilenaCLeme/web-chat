@@ -12,6 +12,7 @@ export default function LoginButton({ userData: { username, password } }) {
   const correctLogin = {
     username: 'admin@admin.com',
     password: '123456',
+    role: 'admin',
   };
 
   useEffect(() => {
@@ -30,7 +31,9 @@ export default function LoginButton({ userData: { username, password } }) {
   }, [username, password]);
 
   function handleClick() {
-    if (redirect) {
+    if (redirect && correctLogin.role === 'admin') {
+      navigate('/adm');
+    } else if (redirect && correctLogin.role === 'atendente') {
       navigate('/chat');
     } else {
       alert('Dados de Login inválidos');
