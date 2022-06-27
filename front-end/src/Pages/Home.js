@@ -15,7 +15,7 @@ export default function Home() {
   const [buttonClick, setButtonClick] = useState('');
 
   const callApi = async (keyWordInput) => {
-    await fetch('http://localhost:3001/keyword', {
+    await fetch('http://localhost:3002/keyword', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { InputAdm, LabelAdm } from '../styles/admStyle';
 
-import { FlexDiv, InputLogin, LabelLogin } from '../styles/loginStyle';
+import { FlexDiv } from '../styles/loginStyle';
 
-export default function LoginInput({ type, fieldName, setterFunction }) {
+export default function AdmInput({ type, fieldName, setterFunction }) {
   return (
     <FlexDiv>
-      <LabelLogin htmlFor={`input-login-${type}`}>
+      <LabelAdm htmlFor={`input-adm-${type}`}>
         {fieldName}
         {' '}
-      </LabelLogin>
-      <InputLogin
+      </LabelAdm>
+      <InputAdm
         className="lf--input"
-        id={`input-login-${type}`}
+        id={`input-adm-${type}`}
         type={type}
         onChange={(e) => setterFunction(e.target.value)}
       />
@@ -20,7 +21,7 @@ export default function LoginInput({ type, fieldName, setterFunction }) {
   );
 }
 
-LoginInput.propTypes = {
+AdmInput.propTypes = {
   type: PropTypes.string.isRequired,
   fieldName: PropTypes.string.isRequired,
   setterFunction: PropTypes.func.isRequired,

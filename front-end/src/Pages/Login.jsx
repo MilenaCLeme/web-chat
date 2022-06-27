@@ -4,7 +4,6 @@ import LoginInput from '../Components/LoginInput';
 import {
   FormLogin, GlobalStyle, MainLogin, TitleLogin,
 } from '../styles/loginStyle';
-import '../styles/loginStyle.css';
 
 export default function Login() {
   const [username, setUsername] = useState('');
