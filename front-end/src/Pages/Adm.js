@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-
 import ManageQuestion from '../Components/ManageQuestion';
 import ManageUser from '../Components/ManageUser';
 import RegisterUser from '../Components/RegisterUser';
 import ResgisterQuestion from '../Components/ResgisterQuestion';
+import { MainTitle } from '../styles/admStyle';
 
 export default function Adm() {
   const [admOption, setAdmOption] = useState('');
@@ -23,6 +23,7 @@ export default function Adm() {
 
   return (
     <div>
+      <MainTitle>Página de cadastro de novas perguntas e atendentes</MainTitle>
       <div>
         <h1>
           <button type="button" onClick={() => setAdmOption('registerUser')}>

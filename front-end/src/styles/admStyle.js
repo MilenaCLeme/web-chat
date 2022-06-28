@@ -109,10 +109,20 @@ const OkButton = styled.button`
     }
   `;
 
+const MainTitle = styled.h1`
+    color:#37474F;
+    font-size: 2.0rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    text-align:center;
+  `;
+
 export {
   InputAdm,
   LabelAdm,
   DeleteButton,
   EditButton,
   OkButton,
+  MainTitle,
 };

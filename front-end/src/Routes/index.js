@@ -12,7 +12,6 @@ export default function Router() {
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/adm" element={<Adm />} />
       {/* <Route exact path="/chat" element={<Chat />} /> */}
-
       <Route exact path="/seller" element={<Seller />} />
 
     </Routes>
