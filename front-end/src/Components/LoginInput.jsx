@@ -15,7 +15,6 @@ export default function LoginInput({ type, fieldName, setterFunction }) {
         id={`input-login-${type}`}
         type={type}
         onChange={(e) => setterFunction(e.target.value)}
-        autoComplete="on"
       />
     </FlexDiv>
   );

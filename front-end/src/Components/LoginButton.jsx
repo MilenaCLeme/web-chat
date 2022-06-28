@@ -5,33 +5,43 @@ import { ButtonLogin } from '../styles/loginStyle';
 
 // eslint-disable-next-line react/prop-types
 export default function LoginButton({ userData: { username, password } }) {
-  const [redirect, setRedirect] = useState(false);
   const [email, setEmail] = useState(false);
+  const [role, setRole] = useState('');
+  const [statusCode, setStatusCode] = useState(500);
   const navigate = useNavigate();
-
-  const correctLogin = {
-    username: 'admin@admin.com',
-    password: '123456',
-  };
 
   useEffect(() => {
     const re = /\S+@\S+\.\S+/;
     setEmail(re.test(username));
-    // async function callApi(){
-    //   const response = await functionApi()
-    //   if (response.statusCode === 200)
-    //   setRedirect(true);
-    // }
-    // callAPi()
-    if (correctLogin.username === username
-      && correctLogin.password === password) {
-      setRedirect(true);
+  }, [username]);
+
+  useEffect(() => {
+    async function callApi() {
+      const request = await fetch('http://localhost:3001/adminlogin', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: username,
+          password,
+        }),
+      });
+      setStatusCode(request.status);
+      const response = await request.json();
+      setRole(response.role);
     }
+    callApi();
   }, [username, password]);
 
-  function handleClick() {
-    if (redirect) {
-      navigate('/chat');
+  async function handleClick() {
+    if (statusCode === 200) {
+      if (role === 'admin') {
+        navigate('/adm');
+      } else if (role === 'atendente') {
+        navigate('/seller');
+      }
     } else {
       alert('Dados de Login inválidos');
     }
@@ -42,7 +52,7 @@ export default function LoginButton({ userData: { username, password } }) {
       className="lf--submit"
       type="button"
       onClick={() => handleClick()}
-      disabled={!!(!email || password.length < 6)}
+      disabled={!!(!email || password.length < 5)}
     >
       Entrar
     </ButtonLogin>
