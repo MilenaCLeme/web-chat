@@ -69,6 +69,7 @@ $ npm run start
 $ npm run restartBD
 
 # O servidor iniciará na porta:3001 - <http://localhost:3001>
+```
 
 ### Rodando o Front-End 
 
