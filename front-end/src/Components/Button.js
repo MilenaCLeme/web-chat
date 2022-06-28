@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import {
-  FaleAtendente, FaleConosco, Finaliza, Opcoes,
+  FaleAtendente, FaleConosco, Finaliza, Opcoes, ClosedButton,
 } from '../styles/homeStyle';
 
 // eslint-disable-next-line react/prop-types
@@ -35,6 +35,13 @@ export default function Button({
       <Finaliza style={name === 'Finalizar' ? { backgroundColor: '#f54053' } : {}} disabled={bool} type="submit" onClick={func}>
         {name}
       </Finaliza>
+    );
+  }
+  if (stl === 'closed') {
+    return (
+      <ClosedButton type="submit" disabled={bool} onClick={func}>
+        {name}
+      </ClosedButton>
     );
   }
 }
