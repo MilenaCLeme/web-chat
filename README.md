@@ -43,3 +43,30 @@ Web Chat criado no intuito de possibilitar a comunicação entre o usuário e o 
 Para iniciar é necessário ter instalado na máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [MySQL](https://dev.mysql.com/doc/) e um editor de código como o [VSCode](https://code.visualstudio.com/).
 
+### Rodando o servidor Back-End
+
+```bash
+# Clone este repositório com a chave SSH ou HTTP a depender de como seu git está configurado.
+
+# Acesse a pasta do projeto no terminal
+$ cd web-chat
+
+# Entre na pasta back-end
+$ cd back-end
+
+# Instale as dependências com o comando
+$ npm install
+
+## Crie um arquivo .env
+
+MYSQL_USER=
+MYSQL_PASSWORD=
+HOSTNAME=
+PORT=
+	
+# Execute a aplicação
+$ npm run start
+$ npm run restartBD
+
+# O servidor iniciará na porta:3001 - <http://localhost:3001>
+
