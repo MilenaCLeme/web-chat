@@ -13,6 +13,9 @@ Web Chat criado no intuito de possibilitar a comunicação entre o usuário e o 
   <a href="https://www.w3schools.com/cssref/">
     <img src="https://img.shields.io/badge/css-339933?style=for-the-badge&logo=css3&color=gray" />
   </a>
+    <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML">
+    <img src="https://img.shields.io/badge/html5-339933?style=for-the-badge&logo=html5&color=gray" />
+  </a>
   <a href="https://pt-br.reactjs.org/docs/getting-started.html">
     <img src="https://img.shields.io/badge/React-339933?style=for-the-badge&logo=react&color=gray" />
   </a>
