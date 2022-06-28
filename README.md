@@ -41,5 +41,5 @@ Web Chat criado no intuito de possibilitar a comunicação entre o usuário e o 
 ### Requisitos
 
 Para iniciar é necessário ter instalado na máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e [MySQL](https://dev.mysql.com/doc/) e um editor de código como o [VSCode](https://code.visualstudio.com/).
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [MySQL](https://dev.mysql.com/doc/) e um editor de código como o [VSCode](https://code.visualstudio.com/).
 
