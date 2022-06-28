@@ -70,3 +70,24 @@ $ npm run restartBD
 
 # O servidor iniciará na porta:3001 - <http://localhost:3001>
 
+### Rodando o Front-End 
+
+```bash
+# Clone este repositório com a chave SSH ou HTTP a depender de como seu git está configurado.
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd cd web-chat
+
+# Entre na pasta front-end
+$ cd front-end
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+
+```
+<br>
