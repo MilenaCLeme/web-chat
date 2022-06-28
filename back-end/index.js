@@ -19,19 +19,23 @@ const io = new Server(server, {
   },
 });
 
-app.use(cors());
-app.use(root);
-app.use(error);
-
 io.on("connection", (socket) => {
-  console.log(`User Connected: ${socket.id}`); // quando conectar no front vai aparecer o id do user
+ console.log(`User Connected: ${socket.id}`); // quando conectar no front vai aparecer o id do user
 
-  socket.on('send_mensage', (data) => console.log(data)); // recebe mensagens do front
+  socket.on('send_mensage', (data) => {
+      console.log(data);
+      io.emit('send_mensage', data)
+    }
+  ); // recebe mensagens do front
 
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id); // e quando o user sair vai aparecer a mensagem
   });
 });
+
+app.use(cors());
+app.use(root);
+app.use(error);
 
 // app.listen(PORT, () => console.log(`ouvindo porta ${PORT}!`));
 

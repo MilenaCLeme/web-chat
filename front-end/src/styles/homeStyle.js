@@ -26,8 +26,9 @@ const MainContainer = styled.section`
 const ChatArea = styled.div`
   border: 1px solid;
   border-radius: 10px;
-  padding: 50px 20px 10px 10px;
+  padding: 10px 20px 10px 10px;
   float: right;
+  width: 342px;
 `;
 
 const InputChat = styled.input`
@@ -51,6 +52,10 @@ const FaleConosco = styled.button`
   text-shadow: 0 1px 0 rgba(black, .2);
   float: right;
   margin-top: 5px;
+  :disabled {
+    background-color: #666;
+    cursor: auto;
+  }
 `;
 
 const Opcoes = styled.button`
@@ -135,6 +140,11 @@ const Finaliza = styled.button`
   :hover {
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
   }
+  :disabled {
+    background-color: #e8e8e8;
+    cursor: auto;
+    box-shadow: none
+  }
 `;
 
 const Answer = styled.p`
@@ -143,6 +153,46 @@ const Answer = styled.p`
   background-color: #e8e8e8;
   padding: 15px;
   max-width: fit-content;
+`;
+
+const ClosedButton = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: large;
+`;
+
+const DivClosedButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const ParagraphTime = styled.p`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #666;
+  font-weight: 600;
+`;
+
+const FormChat = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const LabelChat = styled.label`
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+
+  span {
+    width: 100px;
+  }
+  
+  input {
+    padding: 5px;
+  }
 `;
 
 export {
@@ -155,4 +205,9 @@ export {
   FaleAtendente,
   Finaliza,
   Answer,
+  ClosedButton,
+  DivClosedButton,
+  ParagraphTime,
+  FormChat,
+  LabelChat,
 };
