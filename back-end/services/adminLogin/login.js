@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const Model = require('../../models');
-const { invalidData } = require('../../utilities/setErrors');
+const { invalidData, invalidLogin } = require('../../utilities/setErrors');
 const { validateLogin } = require('./validations');
 
 module.exports = async (user) => {
