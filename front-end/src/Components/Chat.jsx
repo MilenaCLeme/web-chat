@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { RightChat, LeftChat } from '../styles/chatStyle';
 
-function Chat({ name, message }) {
+function Chat({ name, message, typePeople }) {
   return (
     <>
       <h2>{name}</h2>
       <div>
         {
           message.map(({ type, text }) => {
-            if (type === 'client') {
+            if (type === typePeople) {
               return (
-                <div>
+                <RightChat key={text}>
                   <p>{text}</p>
-                </div>
+                </RightChat>
               );
             }
             return (
-              <div>
-                <p style={{ color: 'red' }}>{text}</p>
-              </div>
+              <LeftChat key={text}>
+                <p>{text}</p>
+              </LeftChat>
             );
           })
         }
@@ -33,6 +34,7 @@ Chat.propTypes = {
     type: PropTypes.string,
     text: PropTypes.string,
   })).isRequired,
+  typePeople: PropTypes.string.isRequired,
 };
 
 export default Chat;
