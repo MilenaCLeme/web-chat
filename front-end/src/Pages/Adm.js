@@ -3,7 +3,8 @@ import ManageQuestion from '../Components/ManageQuestion';
 import ManageUser from '../Components/ManageUser';
 import RegisterUser from '../Components/RegisterUser';
 import ResgisterQuestion from '../Components/ResgisterQuestion';
-import { MainTitle } from '../styles/admStyle';
+import { MainTitle, ButtonsDiv, MainDiv } from '../styles/admStyle';
+import Button from '../Components/Button';
 
 export default function Adm() {
   const [admOption, setAdmOption] = useState('');
@@ -22,34 +23,14 @@ export default function Adm() {
   }
 
   return (
-    <div>
-      <MainTitle>Página de cadastro de novas perguntas e atendentes</MainTitle>
-      <div>
-        <h1>
-          <button type="button" onClick={() => setAdmOption('registerUser')}>
-            Cadastrar novo atendente
-          </button>
-        </h1>
-        <h1>
-          <button type="button" onClick={() => setAdmOption('registerQuestion')}>
-            Cadastrar nova pergunta
-          </button>
-        </h1>
-        <h1>
-          <button type="button" onClick={() => setAdmOption('ManageUsers')}>
-            Gerenciar atendentes
-          </button>
-        </h1>
-        {/*         <h1>
-          <button type="button" onClick={() => setAdmOption('ManageQuestions')}>
-            Gerenciar perguntas
-          </button>
-        </h1> */}
-      </div>
-      <div>
+    <MainDiv>
+      <MainTitle>Cadastro de novas perguntas e atendentes</MainTitle>
+      <ButtonsDiv>
+        <Button type="button" stl="faleconosco" bool={false} name="Cadastrar novo atendente" func={() => setAdmOption('registerUser')} />
+        <Button type="button" stl="faleconosco" bool={false} name="Cadastrar nova pergunta" func={() => setAdmOption('registerQuestion')} />
+        <Button type="button" stl="faleconosco" bool={false} name="Gerenciar atendentes" func={() => setAdmOption('ManageUsers')} />
         {renderComponent()}
-      </div>
-
-    </div>
+      </ButtonsDiv>
+    </MainDiv>
   );
 }
