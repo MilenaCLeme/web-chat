@@ -30,7 +30,7 @@ export default function ManageUser() {
 
   return (
     <div>
-      {users.map((user) => (
+      {users.filter((user) => user.role !== 'admin').map((user) => (
         <div>
           <h3>
             {user.name}
