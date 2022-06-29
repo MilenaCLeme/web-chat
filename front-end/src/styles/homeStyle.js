@@ -187,11 +187,10 @@ const LabelChat = styled.label`
   padding: 10px 5px;
 
   span {
-    width: 100px;
-  }
-  
-  input {
-    padding: 5px;
+    width: 65px;
+    font-size: large;
+    font-weight: 600;
+    color: #666;
   }
 `;
 
