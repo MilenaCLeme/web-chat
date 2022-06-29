@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import checkEmail from '../common/utils/checkEmail';
 import Button from '../Components/Button';
+import getRandom from '../common/utils/getRandom';
 import socket from '../server';
 import Chat from '../Components/Chat';
 import {
@@ -42,6 +43,7 @@ export default function Home() {
       name: n,
       email: e,
       message: [{
+        messageId: getRandom(),
         type: 'seller',
         text: 'Como posso ajudar?',
       }],
@@ -78,10 +80,11 @@ export default function Home() {
   const insertMessage = (t) => {
     const arrayNew = callAll.filter((tipo) => tipo.id === people)[0];
     const jsonMessage = {
+      messageId: getRandom(),
       type: 'client',
       text: t,
     };
-    const newArrayMessage = [...arrayNew.message, jsonMessage];
+    const newArrayMessage = [jsonMessage, ...arrayNew.message];
     const newCall = callAll.map((call) => {
       if (call.id === people) {
         return {
@@ -105,7 +108,7 @@ export default function Home() {
           <ChatArea>
             <>
               <button type="button" onClick={() => { setChatClient(false); setStartForm(true); }}>Voltar</button>
-              <Chat typePeople="client" name="Assistente" message={message ? message.message : []} />
+              <Chat typePeople="client" name="Assistente" message={message ? message.message : []} basis="0" />
               <input type="text" value={text} onChange={({ target }) => setText(target.value)} />
               <button type="submit" onClick={() => insertMessage(text, name)}>Enviar</button>
             </>
@@ -121,11 +124,11 @@ export default function Home() {
             <FormChat>
               <LabelChat htmlFor="name">
                 <span>Nome:</span>
-                <input type="text" id="name" name="name" value={name} onChange={({ target }) => setName(target.value)} />
+                <InputChat type="text" id="name" name="name" value={name} onChange={({ target }) => setName(target.value)} />
               </LabelChat>
               <LabelChat htmlFor="email">
                 <span>E-mail:</span>
-                <input type="text" id="email" name="email" value={email} onChange={({ target }) => setEmail(target.value)} />
+                <InputChat type="text" id="email" name="email" value={email} onChange={({ target }) => setEmail(target.value)} />
               </LabelChat>
               <div>
                 <Button
