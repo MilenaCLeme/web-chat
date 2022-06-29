@@ -6,7 +6,6 @@ const InputAdm = styled.input`
   border: 1;
   font-size: 1rem;
   max-width: fit-content;
-
 `;
 
 const LabelAdm = styled.label`
@@ -109,10 +108,41 @@ const OkButton = styled.button`
     }
   `;
 
+const MainTitle = styled.h1`
+    color:#37474F;
+    font-size: 2.0rem;
+    font-weight: 600;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align:center;
+  `;
+
+const ButtonsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  button {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    width: 250px;
+  }
+
+`;
+const MainDiv = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
 export {
   InputAdm,
   LabelAdm,
   DeleteButton,
   EditButton,
   OkButton,
+  MainTitle,
+  ButtonsDiv,
+  MainDiv,
 };

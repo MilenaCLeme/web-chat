@@ -78,25 +78,27 @@ export default function Home() {
   };
 
   const insertMessage = (t) => {
-    const arrayNew = callAll.filter((tipo) => tipo.id === people)[0];
-    const jsonMessage = {
-      messageId: getRandom(),
-      type: 'client',
-      text: t,
-    };
-    const newArrayMessage = [jsonMessage, ...arrayNew.message];
-    const newCall = callAll.map((call) => {
-      if (call.id === people) {
-        return {
-          id: call.id,
-          name: call.name,
-          email: call.email,
-          message: newArrayMessage,
-        };
-      }
-      return { ...call };
-    });
-    socket.emit('send_mensage', newCall);
+    if (t !== t.trim) {
+      const arrayNew = callAll.filter((tipo) => tipo.id === people)[0];
+      const jsonMessage = {
+        messageId: getRandom(),
+        type: 'client',
+        text: t,
+      };
+      const newArrayMessage = [...arrayNew.message, jsonMessage];
+      const newCall = callAll.map((call) => {
+        if (call.id === people) {
+          return {
+            id: call.id,
+            name: call.name,
+            email: call.email,
+            message: newArrayMessage,
+          };
+        }
+        return { ...call };
+      });
+      socket.emit('send_mensage', newCall);
+    }
   };
 
   const message = callAll.filter((tipo) => tipo.id === people)[0];
@@ -107,10 +109,12 @@ export default function Home() {
         chatClient && (
           <ChatArea>
             <>
-              <button type="button" onClick={() => { setChatClient(false); setStartForm(true); }}>Voltar</button>
-              <Chat typePeople="client" name="Assistente" message={message ? message.message : []} basis="0" />
-              <input type="text" value={text} onChange={({ target }) => setText(target.value)} />
-              <button type="submit" onClick={() => insertMessage(text, name)}>Enviar</button>
+              <DivClosedButton>
+                <Button name="voltar" bool={false} func={() => { setChatClient(false); setStartForm(true); }} stl="closed" />
+              </DivClosedButton>
+              <Chat typePeople="client" name="Assistente" message={message ? message.message : []} />
+              <InputChat type="text" value={text} onChange={({ target }) => setText(target.value)} />
+              <Button name="Enviar" func={() => { insertMessage(text, name); setText(''); }} stl="final-envia" bool={false} />
             </>
           </ChatArea>
         )

@@ -80,7 +80,7 @@ $ npm run restartBD
 # Clone este repositório com a chave SSH ou HTTP a depender de como seu git está configurado.
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd cd web-chat
+$ cd web-chat
 
 # Entre na pasta front-end
 $ cd front-end

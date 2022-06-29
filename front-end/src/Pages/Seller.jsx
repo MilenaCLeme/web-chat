@@ -30,6 +30,7 @@ function Seller() {
   const message = callAll.filter((tipo) => tipo.id === idPeople)[0];
 
   const insertMessage = (t) => {
+<<<<<<< HEAD
     if (t.trim()) {
       const arrayNew = callAll.filter((tipo) => tipo.id === idPeople)[0];
       const jsonMessage = {
@@ -38,6 +39,15 @@ function Seller() {
         text: t,
       };
       const newArrayMessage = [jsonMessage, ...arrayNew.message];
+=======
+    if (t !== t.trim) {
+      const arrayNew = callAll.filter((tipo) => tipo.id === idPeople)[0];
+      const jsonMessage = {
+        type: 'seller',
+        text: t,
+      };
+      const newArrayMessage = [...arrayNew.message, jsonMessage];
+>>>>>>> fe1d099c1b8da6a0fb01090d9c71856df046eab4
       const newCall = callAll.map((call) => {
         if (call.id === idPeople) {
           return {
