@@ -7,6 +7,7 @@ socket.on('connect', () => console.log('[IO] => new connnwct'));
 
 function Provider({ children }) {
   const [callAll, setCallAll] = useState([]);
+  const [roleLogin, setRoleLogin] = useState();
 
   useEffect(() => {
     const handleNew = (newCall) => setCallAll(newCall);
@@ -15,8 +16,8 @@ function Provider({ children }) {
   }, [callAll]);
 
   const armazena = useMemo(() => ({
-    callAll, setCallAll,
-  }), [callAll]);
+    callAll, setCallAll, roleLogin, setRoleLogin,
+  }), [callAll, roleLogin]);
 
   return (
     <MyContext.Provider value={armazena}>
