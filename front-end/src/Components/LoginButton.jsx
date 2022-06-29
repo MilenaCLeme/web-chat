@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ButtonLogin } from '../styles/loginStyle';
+import MyContext from '../Context';
 
-// eslint-disable-next-line react/prop-types
-export default function LoginButton({ userData: { username, password } }) {
+function LoginButton({ userData: { username, password } }) {
   const [email, setEmail] = useState(false);
   const [role, setRole] = useState('');
   const [statusCode, setStatusCode] = useState(500);
+
+  const { setRoleLogin } = useContext(MyContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,6 +34,7 @@ export default function LoginButton({ userData: { username, password } }) {
       setStatusCode(request.status);
       const response = await request.json();
       setRole(response.role);
+      setRoleLogin(response.role);
     }
     callApi();
   }, [username, password]);
@@ -66,3 +70,5 @@ LoginButton.propTypes = {
   }).isRequired,
 
 };
+
+export default LoginButton;
