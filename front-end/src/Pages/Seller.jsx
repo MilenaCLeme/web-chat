@@ -13,24 +13,26 @@ function Seller() {
   const message = callAll.filter((tipo) => tipo.id === idPeople)[0];
 
   const insertMessage = (t) => {
-    const arrayNew = callAll.filter((tipo) => tipo.id === idPeople)[0];
-    const jsonMessage = {
-      type: 'seller',
-      text: t,
-    };
-    const newArrayMessage = [...arrayNew.message, jsonMessage];
-    const newCall = callAll.map((call) => {
-      if (call.id === idPeople) {
-        return {
-          id: call.id,
-          name: call.name,
-          email: call.email,
-          message: newArrayMessage,
-        };
-      }
-      return { ...call };
-    });
-    socket.emit('send_mensage', newCall);
+    if (t !== t.trim) {
+      const arrayNew = callAll.filter((tipo) => tipo.id === idPeople)[0];
+      const jsonMessage = {
+        type: 'seller',
+        text: t,
+      };
+      const newArrayMessage = [...arrayNew.message, jsonMessage];
+      const newCall = callAll.map((call) => {
+        if (call.id === idPeople) {
+          return {
+            id: call.id,
+            name: call.name,
+            email: call.email,
+            message: newArrayMessage,
+          };
+        }
+        return { ...call };
+      });
+      socket.emit('send_mensage', newCall);
+    }
   };
 
   return (

@@ -76,7 +76,7 @@ export default function Home() {
   };
 
   const insertMessage = (t) => {
-    if (t !== '') {
+    if (t !== t.trim) {
       const arrayNew = callAll.filter((tipo) => tipo.id === people)[0];
       const jsonMessage = {
         type: 'client',

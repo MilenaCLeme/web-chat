@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   position: relative;
   height: 99%;
-  background:#f2f2f2 ;
+  background: #f2f2f2 ;
   font-family: 'Roboto', helvetica, arial, sans-serif;
   font-size: 1.5em;
 }
