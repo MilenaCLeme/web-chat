@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 import socket from '../server';
 import Button from '../Components/Button';
 import Chat from '../Components/Chat';
@@ -15,22 +14,14 @@ import { InputChat } from '../styles/homeStyle';
 import getRandom from '../common/utils/getRandom';
 
 function Seller() {
-  const navigate = useNavigate();
   const [idPeople, setIdPeople] = useState();
   const [text, setText] = useState('');
 
-  const { callAll, roleLogin } = useContext(MyContext);
-
-  useEffect(() => {
-    if (!roleLogin) {
-      navigate('/login');
-    }
-  }, []);
+  const { callAll } = useContext(MyContext);
 
   const message = callAll.filter((tipo) => tipo.id === idPeople)[0];
 
   const insertMessage = (t) => {
-<<<<<<< HEAD
     if (t.trim()) {
       const arrayNew = callAll.filter((tipo) => tipo.id === idPeople)[0];
       const jsonMessage = {
@@ -39,15 +30,6 @@ function Seller() {
         text: t,
       };
       const newArrayMessage = [jsonMessage, ...arrayNew.message];
-=======
-    if (t !== t.trim) {
-      const arrayNew = callAll.filter((tipo) => tipo.id === idPeople)[0];
-      const jsonMessage = {
-        type: 'seller',
-        text: t,
-      };
-      const newArrayMessage = [...arrayNew.message, jsonMessage];
->>>>>>> fe1d099c1b8da6a0fb01090d9c71856df046eab4
       const newCall = callAll.map((call) => {
         if (call.id === idPeople) {
           return {
