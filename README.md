@@ -40,6 +40,9 @@ Web Chat criado no intuito de possibilitar a comunicação entre o usuário e o 
 </div>
 <br>
 
+## Deploy do projeto
+Acesse o site https://chat-sac.herokuapp.com e veja a aplicação rodando na web
+
 ## Rodando a aplicação localmente
 ### Requisitos
 
