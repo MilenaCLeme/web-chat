@@ -13,6 +13,8 @@ import {
   ParagraphTime,
   FormChat,
   LabelChat,
+  ChatHome,
+  InputWithButton,
 } from '../styles/homeStyle';
 import MyContext from '../Context';
 
@@ -85,7 +87,7 @@ export default function Home() {
         type: 'client',
         text: t,
       };
-      const newArrayMessage = [...arrayNew.message, jsonMessage];
+      const newArrayMessage = [jsonMessage, ...arrayNew.message];
       const newCall = callAll.map((call) => {
         if (call.id === people) {
           return {
@@ -108,14 +110,16 @@ export default function Home() {
       {
         chatClient && (
           <ChatArea>
-            <>
+            <ChatHome>
               <DivClosedButton>
                 <Button name="voltar" bool={false} func={() => { setChatClient(false); setStartForm(true); }} stl="closed" />
               </DivClosedButton>
               <Chat typePeople="client" name="Assistente" message={message ? message.message : []} />
-              <InputChat type="text" value={text} onChange={({ target }) => setText(target.value)} />
-              <Button name="Enviar" func={() => { insertMessage(text, name); setText(''); }} stl="final-envia" bool={false} />
-            </>
+              <InputWithButton>
+                <InputChat type="text" value={text} onChange={({ target }) => setText(target.value)} />
+                <Button name="Enviar" func={() => { insertMessage(text, name); setText(''); }} stl="final-envia" bool={false} />
+              </InputWithButton>
+            </ChatHome>
           </ChatArea>
         )
       }
