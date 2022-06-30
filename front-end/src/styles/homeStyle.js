@@ -26,7 +26,7 @@ const MainContainer = styled.section`
 const ChatArea = styled.div`
   border: 1px solid;
   border-radius: 10px;
-  padding: 10px 20px 10px 10px;
+  padding: 10px 10px 10px 10px;
   float: right;
   width: 342px;
 `;
@@ -194,6 +194,25 @@ const LabelChat = styled.label`
   }
 `;
 
+const ChatHome = styled.div`
+  h2 {
+    border-bottom: 1px solid;
+  }
+`;
+
+const InputWithButton = styled.div`
+  display: flex;
+  align-items: center;
+
+  input {
+    padding: 10px;
+  }
+
+  button {
+    margin-left: 10px
+  }
+`;
+
 export {
   GlobalStyle,
   MainContainer,
@@ -209,4 +228,6 @@ export {
   ParagraphTime,
   FormChat,
   LabelChat,
+  ChatHome,
+  InputWithButton,
 };
