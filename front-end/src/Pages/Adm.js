@@ -1,30 +1,13 @@
-<<<<<<< HEAD
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-=======
 import React, { useState } from 'react';
->>>>>>> fe1d099c1b8da6a0fb01090d9c71856df046eab4
 import ManageQuestion from '../Components/ManageQuestion';
 import ManageUser from '../Components/ManageUser';
 import RegisterUser from '../Components/RegisterUser';
 import ResgisterQuestion from '../Components/ResgisterQuestion';
-<<<<<<< HEAD
-import MyContext from '../Context';
-=======
 import { MainTitle, ButtonsDiv, MainDiv } from '../styles/admStyle';
 import Button from '../Components/Button';
->>>>>>> fe1d099c1b8da6a0fb01090d9c71856df046eab4
 
 export default function Adm() {
-  const navigate = useNavigate();
   const [admOption, setAdmOption] = useState('');
-  const { roleLogin } = useContext(MyContext);
-
-  useEffect(() => {
-    if (!roleLogin) {
-      navigate('/login');
-    }
-  }, []);
 
   function renderComponent() {
     if (admOption === 'registerUser') {
