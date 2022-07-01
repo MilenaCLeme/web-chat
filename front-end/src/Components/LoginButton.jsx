@@ -27,10 +27,13 @@ export default function LoginButton({ userData: { username, password }, setterFu
         }),
       });
       const response = await request.json();
+      if (response === 'Email ou senha incorretos') {
+        alert('Dados de Login inválidos');
+      }
       setterFunction(response);
       setRoleLogin(response.role);
     } catch {
-      alert('Dados de Login inválidos');
+      console.log('Erro');
     }
   }
 
