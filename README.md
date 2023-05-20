@@ -41,7 +41,7 @@ Web Chat criado no intuito de possibilitar a comunicação entre o usuário e o 
 <br>
 
 ## Deploy do projeto
-Acesse o site https://chat-sac.herokuapp.com e use a aplicação em tempo real.
+Acesse o site [easy-sac.vercel.app](https://easy-sac.vercel.app/) e use a aplicação em tempo real.
 
 ## Rodando a aplicação localmente
 ### Requisitos
